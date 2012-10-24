@@ -103,8 +103,11 @@ public class CCGLTexture
         		scaledHeight = (int)( height * scale );
         		heightSquared = NextPowerOfTwo( scaledHeight );
         		Bitmap scaledBitmap = Bitmap.createScaledBitmap( bitmap, widthSquared, heightSquared, true );
-        		bitmap.recycle();
-        		bitmap = scaledBitmap;
+			if( scaledBitmap != bitmap )
+			{
+        			bitmap.recycle();
+        			bitmap = scaledBitmap;
+			}
         	}
         	
 			int[] glName = new int[1];
